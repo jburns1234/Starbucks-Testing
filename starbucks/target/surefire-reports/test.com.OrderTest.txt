@@ -1,0 +1,30 @@
+-------------------------------------------------------------------------------
+Test set: test.com.OrderTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 49.41 sec <<< FAILURE!
+test.com.OrderTest.testIndeedSearch()  Time elapsed: 49.407 sec  <<< FAILURE!
+org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="text-noUnderline color-textBlackSoft block flex justify-between" href="/menu/drinks/cold-coffees">...</a> is not clickable at point (206, 432). Other element would receive the click: <div class="size12of12 flex items-center justify-between color-textWhite bg-houseGreen container___1BkN0 menuPadding___qjbdk" data-e2e="crust">...</div>
+  (Session info: chrome=100.0.4896.88)
+Build info: version: '4.1.3', revision: '7b1ebf28ef'
+System info: host: 'ROSE', ip: '192.168.0.7', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '17.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [960e5aa707453c87f29689837e7e6efc, clickElement {id=a4d5a45e-8e52-4f4c-b809-17347f7e1e5d}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.88, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\rosekrol\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62044}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62044/devtoo..., se:cdpVersion: 100.0.4896.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (960e5aa707453c87f29689837e7e6efc)] -> link text: Cold Coffees]
+Session ID: 960e5aa707453c87f29689837e7e6efc
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:567)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at test.com.OrderTest.testIndeedSearch(OrderTest.java:86)
+
