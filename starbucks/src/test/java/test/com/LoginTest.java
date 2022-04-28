@@ -4,7 +4,17 @@
  */
 package test.com;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,12 +33,14 @@ public class LoginTest {
 
     private WebDriver driver;
     private String baseUrl;
+    private static ArrayList<Login> loginList = new ArrayList<Login>();
+    private static Login logininfo;
 
     public LoginTest() {
     }
 
     @BeforeAll
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
 
     @AfterAll
@@ -48,24 +60,52 @@ public class LoginTest {
     //
     // @Test
     // public void hello() {}
+    
     @Test
     public void testLogin() throws Exception {
+        FileInputStream inputStream = new FileInputStream(new File("C:\\data\\LoginData.xlsx"));
+        Workbook workbook = new XSSFWorkbook(inputStream);
+        //getting first worksheet 
+        Sheet firstSheet = workbook.getSheetAt(0);
+        //get first row 
+
+        for (int i = 1; i < 5; i++) {
+            Row r = firstSheet.getRow(i);
+            Cell c = r.getCell(0);
+            //email value 
+            String email = c.getStringCellValue();
+            c = r.getCell(1);
+            //pass value 
+            String password = c.getStringCellValue();
+
+            logininfo = new Login(email, password);
+            loginList.add(logininfo);
+        }
+        inputStream.close();
+        
         System.setProperty("webdriver.chrome.driver", "c://data//chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "https://www.google.com/";
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
+        
         driver.get("https://www.starbucks.com/");
+        driver.findElement(By.id("truste-consent-button")).click();
         driver.findElement(By.linkText("Sign in")).click();
-        driver.findElement(By.xpath("//main[@id='content']/div[2]/div/div/form/div[2]/div/label")).click();
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("josephburns60173@gmail.com");
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("JosephBurns60173@");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Error:'])[2]/following::*[name()='svg'][1]")).click();
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.findElement(By.xpath("//*[@class='valign-middle block option__labelIcon']")).click();
+            
+        for (int i = 0; i < 4; i++) {
+            driver.findElement(By.id("username")).clear();
+            driver.findElement(By.id("username")).sendKeys(loginList.get(i).getEmail());
+            driver.findElement(By.id("password")).clear();
+            driver.findElement(By.id("password")).sendKeys(loginList.get(i).getPassword());
+            driver.findElement(By.xpath("//*[@type='submit']")).click();
+            Thread.sleep(5000);
+        }
+        
         driver.findElement(By.xpath("//div[@id='137-77815']/div/div/div[2]/div/h1")).click();
         assertEquals("Sign up for Starbucks® Rewards", driver.findElement(By.xpath("//div[@id='137-77815']/div/div/div[2]/div/h1/span/strong")).getText());
+        Thread.sleep(5000);
+        driver.close();
     }
 }

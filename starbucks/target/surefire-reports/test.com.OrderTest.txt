@@ -1,17 +1,17 @@
 -------------------------------------------------------------------------------
 Test set: test.com.OrderTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 49.41 sec <<< FAILURE!
-test.com.OrderTest.testIndeedSearch()  Time elapsed: 49.407 sec  <<< FAILURE!
-org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a class="text-noUnderline color-textBlackSoft block flex justify-between" href="/menu/drinks/cold-coffees">...</a> is not clickable at point (206, 432). Other element would receive the click: <div class="size12of12 flex items-center justify-between color-textWhite bg-houseGreen container___1BkN0 menuPadding___qjbdk" data-e2e="crust">...</div>
-  (Session info: chrome=100.0.4896.88)
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 142.498 sec <<< FAILURE!
+test.com.OrderTest.testIndeedSearch()  Time elapsed: 142.46 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"link text","selector":"Caffè Americano"}
+  (Session info: chrome=100.0.4896.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
 Build info: version: '4.1.3', revision: '7b1ebf28ef'
-System info: host: 'ROSE', ip: '192.168.0.7', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '17.0.2'
+System info: host: 'ROSE', ip: '10.1.10.12', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '17.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [960e5aa707453c87f29689837e7e6efc, clickElement {id=a4d5a45e-8e52-4f4c-b809-17347f7e1e5d}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.88, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\rosekrol\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:62044}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62044/devtoo..., se:cdpVersion: 100.0.4896.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on WINDOWS (960e5aa707453c87f29689837e7e6efc)] -> link text: Cold Coffees]
-Session ID: 960e5aa707453c87f29689837e7e6efc
+Command: [a9afd0a5aeec6acb1c8bcaef5d823ff4, findElement {using=link text, value=Caffè Americano}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\rosekrol\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:54413}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54413/devtoo..., se:cdpVersion: 100.0.4896.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a9afd0a5aeec6acb1c8bcaef5d823ff4
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -24,7 +24,9 @@ Session ID: 960e5aa707453c87f29689837e7e6efc
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:567)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at test.com.OrderTest.testIndeedSearch(OrderTest.java:86)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:385)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:377)
+	at test.com.OrderTest.testIndeedSearch(OrderTest.java:89)
 
