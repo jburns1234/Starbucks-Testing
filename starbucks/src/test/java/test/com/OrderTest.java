@@ -4,6 +4,7 @@
  */
 package test.com;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -12,7 +13,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -55,38 +58,20 @@ public class OrderTest {
         System.setProperty("webdriver.chrome.driver", "c:\\data\\chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "https://www.google.com/";
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-        /*driver.get("https://www.starbucks.com/");
+        //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        JavascriptExecutor js =(JavascriptExecutor) driver;
+        
         driver.manage().window().maximize();
-        driver.findElement(By.id("truste-consent-button")).click();
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Find a store'])[1]//*[name()='svg'][1]")).click();
-        driver.findElement(By.name("place")).click();
-        driver.findElement(By.name("place")).clear();
-        driver.findElement(By.name("place")).sendKeys("60173");
-        driver.findElement(By.cssSelector(".form___KRAyD")).submit();
-        Thread.sleep(5000);
-        driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/section/div[1]/div/article[1]/button")).click();
-        driver.findElement(By.xpath("//main[@id='content']/div[2]/section/div[2]/div/div/div/div/button")).click();
-        //driver.findElement(By.xpath("//div[@id='js-content']/div/div[4]/div[3]/div/div[2]/div/div/button")).click();
-        //driver.findElement(By.xpath("//section[@id='drinks']/div/div[5]/div/a")).click();
-        //driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div/div/h1")).click();
-        //driver.findElement(By.xpath("//span[contains(@class,'color-textWhiteSoft text-xxs block')]")).click();
-        //driver.findElement(By.xpath("//*[@id=\"drinks\"]/div/div[5]/div/a")).click();
-        driver.findElement(By.linkText("Cold Coffees")).click();
-        driver.findElement(By.linkText("Starbucks® Cold Brew Coffee with Milk")).click();
-        driver.findElement(By.xpath("//main[@id='content']/div[3]/div/div[2]/div/form/fieldset/div[3]/label/div")).click();
-        driver.findElement(By.xpath("//main[@id='content']/div[3]/div/div[2]/div[2]/div/div/div/div/button")).click();
-        driver.findElement(By.id("milk-options-customization-option")).click();
-        new Select(driver.findElement(By.id("milk-options-customization-option"))).selectByVisibleText("Whole Milk");
-        driver.findElement(By.xpath("//div[@id='modal-target']/div/div[2]/div[2]/div/div[2]/div/div[3]/div/div/div/button")).click();
-         */
         driver.get("https://www.starbucks.com/");
-        driver.manage().window().maximize();
         driver.findElement(By.id("truste-consent-button")).click();
-        driver.findElement(By.xpath("//*[@id=\"__next\"]/header/nav/div[1]/div/div[2]/div[1]/ul/li[1]/a")).click();
-        //driver.findElement(By.linkText("Cold Coffees")).click();
+        //driver.findElement(By.xpath("//*[@id=\"__next\"]/header/nav/div[1]/div/div[2]/div[1]/ul/li[1]/a")).click();
+        driver.findElement(By.xpath("//*[@class='sb-globalNav__desktopLink md-py5 lg-py6 inline-block text-noUnderline text-xxs text-upper text-bold ']")).click();
+        driver.findElement(By.linkText("Hot Coffees")).click();
+        js.executeScript("window.scrollTo(0,250)");
         driver.findElement(By.linkText("Caffè Americano")).click();
-        driver.findElement(By.xpath("//main[@id='content']/div[3]/div/div/div/div/div/div/button")).click();
+        WebElement Element = driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div/div[2]/div[1]/h2"));
+        js.executeScript("arguments[0].scrollIntoView();",Element);
+        driver.findElement(By.xpath("//*[@class='cursor-pointer mx4 my2 venti-hot___2MA5P sizeImage___1Dy_a']")).click();
+        driver.findElement(By.xpath("//*[@data-e2e='option-Flavors']")).click();
     }
 }
