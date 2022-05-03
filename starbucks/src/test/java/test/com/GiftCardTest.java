@@ -7,9 +7,6 @@ package test.com;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.Cell;
@@ -22,16 +19,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.Message;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -109,15 +101,10 @@ public class GiftCardTest {
 
         driver.findElement(By.xpath("//*[@id='truste-consent-button']")).click();
 
-        //    driver.findElement(By.xpath("//*[contains(text(),'GIFT CARDS')]"));
-        //  driver.findElement(webdriver.By.xpath("//div('Gift Cards')"));
-        driver.findElement(By.xpath("//*[@id=\"__next\"]/header/nav/div[1]/div/div[2]/div[1]/ul/li[3]/a")).click();
-    //    driver.findElement(By.xpath("//*[@data-e2e='dotComHamburgerNavMenuGift']")).click();
-        //      driver.findElement(By.xpath("//*[text()='Gift Cards']")).click();
+        driver.findElement(By.xpath("//*[contains(text(),'Gift Cards')]")).click();
 
-        driver.findElement(By.xpath("//*[@id=\"carousel11\"]/div[2]/div[3]/a")).click();
-      //  driver.findElement(By.xpath("//*[@class='block sb-svc-image--image sb-imageFade__imagePositioning sb-imageFade__show']")).click();
-        // driver.findElement(By.xpath("//*[@id=\"carousel11\"]/div[2]/div[3]/a")).click();
+        driver.findElement(By.xpath("//*[@data-product-name='Shape The World FY22']")).click();
+        
         WebElement mySelectElement = driver.findElement(By.name("amount"));
         Select amount = new Select(mySelectElement);
         Thread.sleep(1000);
