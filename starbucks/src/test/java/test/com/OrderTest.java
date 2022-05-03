@@ -4,6 +4,7 @@
  */
 package test.com;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

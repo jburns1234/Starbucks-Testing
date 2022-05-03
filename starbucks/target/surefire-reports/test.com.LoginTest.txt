@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: test.com.LoginTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 64.92 sec <<< FAILURE!
 test.com.LoginTest.testLogin()  Time elapsed: 64.914 sec  <<< FAILURE!
 org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: //div[@id='137-77815']/div/div/div[2]/div/h1
@@ -9,6 +10,32 @@ Build info: version: '4.1.3', revision: '7b1ebf28ef'
 System info: host: 'LATITUDE', ip: '10.1.10.219', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.2'
 Driver info: driver.version: RemoteWebDriver
 	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+=======
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 140.01 sec <<< FAILURE!
+test.com.LoginTest.testLogin()  Time elapsed: 140.009 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@id='137-77815']/div/div/div[2]/div/h1"}
+  (Session info: chrome=100.0.4896.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.1.3', revision: '7b1ebf28ef'
+System info: host: 'ROSE', ip: '10.1.10.12', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '17.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9e6739c5aecfeb8ff0b6dc06bddab0d8, findElement {using=xpath, value=//div[@id='137-77815']/div/div/div[2]/div/h1}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.127, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\rosekrol\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:65349}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:65349/devtoo..., se:cdpVersion: 100.0.4896.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 9e6739c5aecfeb8ff0b6dc06bddab0d8
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:567)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+>>>>>>> e233ff719e3c859ddfa300b6c813f40a89d48835
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:385)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:377)
