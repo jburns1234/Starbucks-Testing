@@ -5,6 +5,7 @@
 // Author Gabriel Muntean
 package test.com;
 
+import com.itexps.GiftCard;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
