@@ -4,7 +4,6 @@
  */
 package test.com;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -16,18 +15,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 /**
  *
  * @author Daivat Pandya
  */
-public class OrderTest {
+public class FlavorsTest {
 
     private WebDriver driver;
     private String baseUrl;
 
-    public OrderTest() {
+    public FlavorsTest() {
     }
 
     @BeforeAll
@@ -52,7 +50,7 @@ public class OrderTest {
     // @Test
     // public void hello() {}
     @Test
-    public void testCupSize() throws Exception {
+    public void testFlavors() throws Exception {
         System.setProperty("webdriver.chrome.driver", "c:\\data\\chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "https://www.starbucks.com/";
@@ -69,13 +67,15 @@ public class OrderTest {
         WebElement element = driver.findElement(By.xpath("//*[@class='sb-heading text-md headingBorder___2qNNi px2 pb2 mb5 text-semibold']"));
         js.executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(By.xpath("//*[@class='cursor-pointer mx4 my2 venti-hot___2MA5P sizeImage___1Dy_a']")).click();
-        element = driver.findElement(By.xpath("//*[@data-e2e='option-Add-ins']"));
-        js.executeScript("arguments[0].scrollIntoView();", element);
-        driver.findElement(By.xpath("//*[@data-e2e='option-Cup Options']")).click();
-        element = driver.findElement(By.id("cup-sizes-customization-option"));
-        element.click();
-        Select cupsize = new Select(element);
-        cupsize.selectByVisibleText("Tall Cup");
+        driver.findElement(By.xpath("//*[@data-e2e='option-Flavors']")).click();
+        driver.findElement(By.xpath("//*[@aria-label='Increase amount of Hazelnut Syrup to 1.']")).click();
+        for (int i = 6; i < 51; i++) {
+            String s = "//*[@aria-label='Increase amount of Hazelnut Syrup to " + i + ".']";
+            driver.findElement(By.xpath(s)).click();
+        }
+        //driver.findElement(By.xpath("//*[@aria-label='Increase amount of Caramel Syrup to 1.']")).click();
+        //driver.findElement(By.xpath("//*[@aria-label='Increase amount of Peppermint Syrup to 1.']")).click();
+        Thread.sleep(10000);
         driver.findElement(By.xpath("//*[@data-e2e='doneFrap']")).click();
         driver.findElement(By.xpath("//*[@data-e2e='add-to-order-button']")).click();
         driver.findElement(By.xpath("//*[@data-e2e='cart-order-count']")).click();
@@ -89,9 +89,9 @@ public class OrderTest {
         driver.findElement(By.xpath("//*[@data-e2e='signInButton']")).click();
         driver.findElement(By.xpath("//*[@class='valign-middle block option__labelIcon']")).click();
         driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("josephburns60173@gmail.com");
+        driver.findElement(By.id("username")).sendKeys("medibak455@bunlets.com");
         driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("JosephBurns60173@");
+        driver.findElement(By.id("password")).sendKeys("Whocares1!");
         driver.findElement(By.xpath("//*[@type='submit']")).click();
     }
     
