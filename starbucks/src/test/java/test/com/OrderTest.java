@@ -52,20 +52,12 @@ public class OrderTest {
     // @Test
     // public void hello() {}
     @Test
-    public void testIndeedSearch() throws Exception {
+    public void testCupSize() throws Exception {
         System.setProperty("webdriver.chrome.driver", "c:\\data\\chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "https://www.starbucks.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        /*
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"content\"]/div[3]/div/div[2]/div[1]/form/fieldset/div[4]/label/div")));
-        
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"content\"]/div[3]/div/div[2]/div[1]/form/fieldset/div[4]/label/div")));
-
-        */
 
         driver.manage().window().maximize();
         driver.get(baseUrl);
@@ -77,16 +69,6 @@ public class OrderTest {
         WebElement element = driver.findElement(By.xpath("//*[@class='sb-heading text-md headingBorder___2qNNi px2 pb2 mb5 text-semibold']"));
         js.executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(By.xpath("//*[@class='cursor-pointer mx4 my2 venti-hot___2MA5P sizeImage___1Dy_a']")).click();
-        /*driver.findElement(By.xpath("//*[@data-e2e='option-Flavors']")).click();
-        driver.findElement(By.xpath("//*[@aria-label='Increase amount of Hazelnut Syrup to 1.']")).click();
-        for (int i = 6; i < 17; i++) {
-            String s = "//*[@aria-label='Increase amount of Hazelnut Syrup to " + i + ".']";
-            driver.findElement(By.xpath(s)).click();
-        }
-        driver.findElement(By.xpath("//*[@aria-label='Increase amount of Caramel Syrup to 1.']")).click();
-        driver.findElement(By.xpath("//*[@aria-label='Increase amount of Peppermint Syrup to 1.']")).click();
-        //Thread.sleep(10000);
-        driver.findElement(By.xpath("//*[@data-e2e='doneFrap']")).click();*/
         element = driver.findElement(By.xpath("//*[@data-e2e='option-Add-ins']"));
         js.executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(By.xpath("//*[@data-e2e='option-Cup Options']")).click();
@@ -103,13 +85,6 @@ public class OrderTest {
         driver.findElement(By.xpath("//*[@data-e2e='submitSearchTermButton']")).click();
         Thread.sleep(5000);
         driver.findElement(By.xpath("//*[@data-e2e='confirmStoreButton']")).click();
-        driver.findElement(By.xpath("//*[@data-e2e='continueFrap']")).click();
-        driver.findElement(By.xpath("//*[@data-e2e='signInButton']")).click();
-        driver.findElement(By.xpath("//*[@class='valign-middle block option__labelIcon']")).click();
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("josephburns60173@gmail.com");
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("JosephBurns60173@");
-        driver.findElement(By.xpath("//*[@type='submit']")).click();
     }
+    
 }
