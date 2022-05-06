@@ -85,14 +85,6 @@ public class OrderTest {
         driver.findElement(By.xpath("//*[@data-e2e='submitSearchTermButton']")).click();
         Thread.sleep(5000);
         driver.findElement(By.xpath("//*[@data-e2e='confirmStoreButton']")).click();
-        driver.findElement(By.xpath("//*[@data-e2e='continueFrap']")).click();
-        driver.findElement(By.xpath("//*[@data-e2e='signInButton']")).click();
-        driver.findElement(By.xpath("//*[@class='valign-middle block option__labelIcon']")).click();
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("josephburns60173@gmail.com");
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("JosephBurns60173@");
-        driver.findElement(By.xpath("//*[@type='submit']")).click();
     }
     
 }
