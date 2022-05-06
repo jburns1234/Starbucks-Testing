@@ -36,8 +36,6 @@ public class GiftCardTest {
     private String baseUrl;
 
     private static GiftCard giftCard;
-    private static ArrayList<GiftCard> giftCardContent = new ArrayList<GiftCard>();
-
     public GiftCardTest() {
     }
 
@@ -71,33 +69,29 @@ public class GiftCardTest {
         Workbook ourproject = new XSSFWorkbook(inputStream);
         Sheet firstSheet = ourproject.getSheetAt(0);
 
-        for (int i = 1; i < 6; i++) {
-            Row r = firstSheet.getRow(i);
-            Cell c = r.getCell(0);
-            String RecipientName = c.getStringCellValue();
-            c = r.getCell(1);
-            String RecipientEmail = c.getStringCellValue();
-            c = r.getCell(2);
-            String SendersName = c.getStringCellValue();
-            c = r.getCell(3);
-            String SendersEmail = c.getStringCellValue();
-            c = r.getCell(4);
-            String Message = c.getStringCellValue();
-            c = r.getCell(5);
+        Row r = firstSheet.getRow(1);
+        Cell c = r.getCell(0);
+        String RecipientName = c.getStringCellValue();
+        c = r.getCell(1);
+        String RecipientEmail = c.getStringCellValue();
+        c = r.getCell(2);
+        String SendersName = c.getStringCellValue();
+        c = r.getCell(3);
+        String SendersEmail = c.getStringCellValue();
+        c = r.getCell(4);
+        String Message = c.getStringCellValue();
+        c = r.getCell(5);
 
-            giftCard = new GiftCard(RecipientName, RecipientEmail, SendersName, SendersEmail, Message);
-            giftCardContent.add(giftCard);
-
-        }
+        giftCard = new GiftCard(RecipientName, RecipientEmail, SendersName, SendersEmail, Message);
 
         inputStream.close();
         System.setProperty("webdriver.chrome.driver", "C:\\Data\\chromedriver.exe");
         driver = new ChromeDriver();
 
-        baseUrl = "https://www.google.com/";
+        baseUrl = "https://www.starbucks.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        driver.get("https://www.starbucks.com/");
+        driver.get(baseUrl);
         driver.manage().window().maximize();
 
         driver.findElement(By.xpath("//*[@id='truste-consent-button']")).click();
@@ -105,37 +99,30 @@ public class GiftCardTest {
         driver.findElement(By.xpath("//*[contains(text(),'Gift Cards')]")).click();
 
         driver.findElement(By.xpath("//*[@data-product-name='Shape The World FY22']")).click();
-        
+
         WebElement mySelectElement = driver.findElement(By.name("amount"));
         Select amount = new Select(mySelectElement);
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         amount.selectByVisibleText("$100");
-        Thread.sleep(1000);
-        for (int i = 0; i < 5; i++) {
-            driver.findElement(By.id("recipientName")).clear();
-            driver.findElement(By.id("recipientName")).sendKeys(giftCardContent.get(i).getRecipientName());
-            Thread.sleep(2000);
-            driver.findElement(By.id("recipientEmail")).clear();
-            driver.findElement(By.id("recipientEmail")).sendKeys(giftCardContent.get(i).getRecipientEmail());
-            Thread.sleep(2000);
-            driver.findElement(By.id("senderName")).click();
-            driver.findElement(By.id("senderName")).clear();
-            driver.findElement(By.id("senderName")).sendKeys(giftCardContent.get(i).getSendersName());
-            Thread.sleep(2000);
-            driver.findElement(By.id("senderEmail")).clear();
-            driver.findElement(By.id("senderEmail")).clear();
-            Thread.sleep(1000);
-            driver.findElement(By.id("senderEmail")).sendKeys(giftCardContent.get(i).getSendersEmail());
-            Thread.sleep(2000);
-            driver.findElement(By.id("messageCounter")).click();
-            driver.findElement(By.id("message")).clear();
-            driver.findElement(By.id("message")).sendKeys(giftCardContent.get(i).getMessage());
-            Thread.sleep(2000);
-        }
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[contains(text(), 'Continue as guest')]")).click();
-        driver.findElement(By.xpath("//*[@data-e2e='sendGift']")).click();
+        //Thread.sleep(1000);
+        driver.findElement(By.id("recipientName")).clear();
+        driver.findElement(By.id("recipientName")).sendKeys(giftCard.getRecipientName());
+        //Thread.sleep(2000);
+        driver.findElement(By.id("recipientEmail")).clear();
+        driver.findElement(By.id("recipientEmail")).sendKeys(giftCard.getRecipientEmail());
+        //Thread.sleep(2000);
+        driver.findElement(By.id("senderName")).click();
+        driver.findElement(By.id("senderName")).clear();
+        driver.findElement(By.id("senderName")).sendKeys(giftCard.getSendersName());
+        //Thread.sleep(2000);
+        driver.findElement(By.id("senderEmail")).clear();
+        driver.findElement(By.id("senderEmail")).clear();
+        //Thread.sleep(1000);
+        driver.findElement(By.id("senderEmail")).sendKeys(giftCard.getSendersEmail());
+        //Thread.sleep(2000);
+        driver.findElement(By.id("messageCounter")).click();
+        driver.findElement(By.id("message")).clear();
+        driver.findElement(By.id("message")).sendKeys(giftCard.getMessage());
 
     }
 }
